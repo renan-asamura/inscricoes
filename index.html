@@ -98,9 +98,27 @@
     <script>
         document.getElementById('formulario').addEventListener('submit', function(event) {
             event.preventDefault(); // Evita o envio padrão do formulário
+ 
+            // Captura o valor do campo do formulário
+            var nomeValue = document.getElementById('nome').value;
+            var emailValue = document.getElementById('email').value;
+            var idadeValue = document.getElementById('idade').value;
+            var telefoneValue = document.getElementById('telefone').value;
+            var alergiasValue = document.getElementById('alergias').value;
+            var mensagemValue = document.getElementById('mensagem').value;
+
+            // Envia o evento para o GA4
+            gtag('event', 'form_submission', {
+                'nome_value': nomeValue,
+                'email_value': emailValue,
+                'idade_value': idadeValue,
+                'telefone_value': telefoneValue,
+                'alergias_value': alergiasValue,
+                'mensagem_value': mensagemValue
+            });
+
             document.getElementById('formulario').style.display = 'none'; // Esconde o formulário
             document.getElementById('mensagem-confirmacao').style.display = 'block'; // Mostra a mensagem de confirmação
-            // Aqui você pode adicionar o código para enviar dados para o GA4 se necessário
         });
     </script>
 </body>
